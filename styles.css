@@ -1,0 +1,687 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f6f6; /* светлый бежевый фон */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Контейнер */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка */
+header {
+    background-color: #f0f6f6; 
+    padding: 40px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: #003366; /* Глубокий синий */
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 20px 0;
+}
+
+nav ul li {
+    margin: 0 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #003366;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #003366; 
+    transform: translateY(-3px);
+}
+
+/* Герой-блок */
+.hero {
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.hero img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.hero img:hover {
+    transform: scale(1.1);
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    padding: 0 20px;
+}
+
+.hero-text h2 {
+    font-size: 3.5rem;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 8% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+/* Кнопки */
+.btn {
+    background-color: #f7ccca; /* Мягкий розовый */
+    color: #003366;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #003366;
+    color: #f0f6f6;
+}
+/* Блок с акцией */
+.promotion-block {
+    background-color: #f7ccca; /* Мягкий розовый */
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.promotion-block h3 {
+    font-size: 1.8rem;
+    color: #003366;
+}
+
+.promotion-block p {
+    font-size: 1.2rem;
+    color: #003366;
+}
+/* Стили для контейнера карточек мастеров */
+.master-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+/* Toast стили */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 350px;
+  max-width: 90%;
+  background-color: #4CAF50;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.5s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-icon {
+  font-size: 36px;
+  margin-right: 15px;
+}
+
+.toast-content h3 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.toast-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Стили для каждой карточки мастера */
+.master-card {
+    background-color: #e4f2fb;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(11, 11, 11, 0.1);
+    overflow: hidden;
+    width: 30%; /* Каждая карточка будет занимать 30% ширины */
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.master-card img {
+    width: 200px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.master-card h3 {
+    font-size: 1.5rem;
+    color: #003366;
+    margin: 15px 0;
+}
+
+.master-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.master-card .btn {
+    background-color: #f7ccca; /* Мягкий розовый */
+    color: #003366;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.master-card .btn:hover {
+    background-color: #003366;
+    color: #f0f6f6;
+}
+
+/* Эффект при наведении на карточку */
+.master-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.master-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .master-card {
+        width: 100%; /* На мобильных устройствах карточки занимают всю ширину */
+    }
+}
+
+/* Контакты и карта */
+.contact, .reviews {
+    margin: 60px 0;
+    color: #003366;
+}
+
+.contact p, .reviews p {
+    font-size: 1.1rem;
+    color: #003366;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+.contact-info div {
+    width: 30%;
+}
+
+.map {
+    margin-top: 30px;
+    width: 100%;
+    height: 400px;
+}
+
+/* Отзывы */
+
+.client-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.reviews {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.reviews h3 {
+    font-size: 2.5rem;
+    color: #003366;
+    margin-bottom: 30px;
+}
+
+/* Контейнер для отзывов */
+.reviews-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 колонки */
+    gap: 20px; /* расстояние между карточками */
+    padding: 0 10px;
+}
+
+.review {
+    background-color: #e4f2fb;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.review .stars {
+    font-size: 1.3rem;
+    color: #f7ccca;
+    margin-top: 10px;
+}
+
+.review-text {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 15px;
+}
+
+/* Эффект при наведении на отзыв */
+.review:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .reviews-container {
+        grid-template-columns: 1fr; /* 1 колонка на мобильных устройствах */
+    }
+}
+
+
+.stars {
+    color: #f7ccca;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+/* Стили для страницы написания отзывов */
+/* Центрирование кнопки на странице */
+.write-review-container {
+    display: flex;
+    justify-content: center; /* по горизонтали */
+    align-items: center;     /* по вертикали */
+    height: 100px;           /* контейнер занимает весь экран */
+}
+
+.write-review-container .btn {
+    width: 80%;             /* кнопка почти во всю ширину экрана */
+    max-width: 400px;       /* но не слишком широкая на больших экранах */
+    padding: 20px;
+    font-size: 1.5rem;
+    background-color: #f7ccca;
+    color: #003366;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.write-review-container .btn:hover {
+    background-color: #003366;
+    color: #f0f6f6;
+}
+
+.write-review {
+    padding: 40px 0;
+}
+
+.write-review .review-form-container {
+    background-color: #f0f6f6;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.write-review h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #003366;
+}
+
+.write-review .form-group {
+    margin-bottom: 20px;
+}
+
+.write-review label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #003366;
+}
+
+.write-review input[type="text"],
+.write-review textarea,
+.write-review select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #f0f6f6;
+    font-size: 1rem;
+}
+
+.write-review input:focus,
+.write-review textarea:focus,
+.write-review select:focus {
+    border-color: #f7ccca;
+    outline: none;
+}
+
+.write-review .btn {
+    background-color: #f7ccca;
+    color: #003366;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.write-review .btn:hover {
+    background-color: #003366;
+    color: #f0f6f6;
+}
+
+
+    /* Стили для портфолио */
+.portfolio {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.portfolio h2 {
+    font-size: 2.5rem;
+    color: #003366;
+    margin-bottom: 30px;
+}
+
+/* Сетка для галереи работ */
+.portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 3 колонки */
+    gap: 10px; /* отступы между элементами */
+    padding: 0 50px;
+}
+
+.work img {
+    width: 200px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Эффект увеличения картинки при наведении */
+.work:hover img {
+    transform: scale(1.05); /* увеличение картинки */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .portfolio-gallery {
+        grid-template-columns: 1fr; /* 1 колонка на экранах меньшего размера */
+    }
+}
+
+
+/* Страница с записью */
+.booking-page {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.booking-page select, .booking-page button {
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid #f0f6f6;
+    margin: 10px 0;
+}
+
+/* Стили для страницы регистрации */
+.register, .login {
+    padding: 40px 0;
+}
+
+.register .form-container, .login .form-container  {
+    background-color: #f0f6f6;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.register h2, .login h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #003366;
+}
+
+.register .form-group, .login .form-group {
+    margin-bottom: 20px;
+}
+
+.register label, .login label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #003366;
+}
+
+.register input[type="text"],
+.register input[type="email"],
+.register input[type="password"],
+.login input[type="email"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #f0f6f6;
+    font-size: 1rem;
+}
+
+.register input:focus, .login input:focus {
+    border-color: #f7ccca;
+    outline: none;
+}
+
+.register .btn, .login .btn {
+    background-color: #f7ccca;
+    color: #003366;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.register .btn:hover, .login .btn:hover {
+    background-color: #003366;
+    color: #f0f6f6;
+}
+
+/* Footer */
+footer {
+    padding: 20px 0;
+    background-color: #f0f6f6;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    color: #003366;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .btn {
+        padding: 12px 30px;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}

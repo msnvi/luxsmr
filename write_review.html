@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Написать отзыв - Салон красоты Люкс Самара</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Написать отзыв</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="masters.html">Мастера</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="register.html">Регистрация</a></li>
+                    <li><a href="login.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="write-review">
+        <div class="container">
+            <form id="reviewForm" onsubmit="submitReview(event)" class="review-form">
+                <div class="form-group">
+                    <label for="client-name">Ваше имя:</label>
+                    <input type="text" id="client-name" name="client-name" required placeholder="Введите ваше имя">
+                </div>
+                <div class="form-group">
+                    <label for="stars">Оценка:</label>
+                    <select id="stars" name="stars" required>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="1">⭐</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="review-text">Ваш отзыв:</label>
+                    <textarea id="review-text" name="review-text" required placeholder="Напишите свой отзыв" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Отправить отзыв</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Салон красоты Люкс Самара</p>
+        </div>
+    </footer>
+
+    <!-- Подключаем SweetAlert2 для красивых уведомлений -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.8/dist/sweetalert2.all.min.js"></script>
+    <script>
+        // Функция обработки отправки отзыва
+        function submitReview(event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+            // Здесь можно добавить логику для отправки отзыва на сервер, например, через AJAX
+
+            // Используем SweetAlert2 для красивого всплывающего уведомления
+            Swal.fire({
+                title: 'Спасибо за отзыв!',
+                text: 'Ожидайте публикации вашего отзыва.',
+                icon: 'success',
+                confirmButtonText: 'Ок',
+                confirmButtonColor: '#3085d6',
+                backdrop: true
+            });
+
+            // Перенаправляем пользователя на страницу с отзывами после отправки
+            setTimeout(function () {
+                window.location.href = "reviews.html";
+            }, 1500); // Переход через 1.5 секунды после показа сообщения
+        }
+    </script>
+
+</body>
+
+</html>

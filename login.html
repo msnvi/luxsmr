@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Люкс Самара</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Люкс Самара</h1>
+        <nav>
+            <ul style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 0; align-items: center;">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="masters.html">Мастера</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="portfolio.html">Портфолио</a></li>
+                <li><a href="register.html">Регистрация</a></li>
+                <li><a href="login.html">Вход</a></li>
+                <!-- Блок для отображения активного пользователя -->
+                <li id="userDisplay" style="margin-left: 20px; font-weight: bold; cursor: pointer; color: #003366;"></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <main>
+    <section class="register">
+    <div class="container">
+        <h2>Вход в аккаунт</h2>
+        <form id="loginForm" class="register-form">
+            <div class="form-group">
+                <label for="username">Имя пользователя:</label>
+                <input type="text" id="username" name="username" required placeholder="Введите имя пользователя">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required placeholder="Введите пароль" minlength="8">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Войти</button>
+            </div>
+            <p id="message" style="text-align: center; margin-top: 10px;"></p>
+        </form>
+    </div>
+</section>
+    </main>
+  
+<script>
+    
+const loginForm = document.getElementById('loginForm');
+const msg = document.getElementById('message');
+
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+
+    // Получаем данные пользователя, сохранённые при регистрации
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    // Проверка: есть ли вообще зарегистрированный пользователь
+    if (!storedUser) {
+        msg.textContent = "Пользователь не найден!";
+        msg.style.color = "red";
+        return;
+    }
+
+    // Проверка имени пользователя
+    if (storedUser.username !== username) {
+        msg.textContent = "Имя пользователя неверное!";
+        msg.style.color = "red";
+        return;
+    }
+
+    // Проверка пароля
+    if (storedUser.password !== password) {
+        msg.textContent = "Неверный пароль!";
+        msg.style.color = "red";
+        return;
+    }
+
+    // Успешный вход
+    localStorage.setItem('activeUser', storedUser.username);
+    msg.textContent = "Добро пожаловать, " + storedUser.username + "!";
+    msg.style.color = "#003366";
+
+    setTimeout(() => window.location.href = "masterss.html", 1500);
+});
+</script>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Люкс Самара. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

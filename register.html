@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - Салон красоты Люкс Самара</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Регистрация</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="masters.html">Мастера</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="register.html">Регистрация</a></li>
+                    <li><a href="login.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="register">
+    <div class="container">
+        <form id="registerForm" class="register-form">
+            <div class="form-group">
+                <label for="username">Имя пользователя:</label>
+                <input type="text" id="username" name="username" required placeholder="Введите имя пользователя">
+            </div>
+            <div class="form-group">
+                <label for="email">Электронная почта:</label>
+                <input type="email" id="email" name="email" required placeholder="Введите электронную почту">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required placeholder="Введите пароль" minlength="8">
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Подтвердите пароль:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required placeholder="Подтвердите пароль">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Зарегистрироваться</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Отменяем стандартное поведение формы
+
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if(password !== confirmPassword) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Ошибка',
+            text: 'Пароли не совпадают!',
+            confirmButtonColor: '#003366'
+        });
+        return;
+    }
+
+    // Сохраняем данные в localStorage
+    const user = { username, email, password };
+    localStorage.setItem('user', JSON.stringify(user));
+
+    // Красивое уведомление об успешной регистрации
+    Swal.fire({
+        icon: 'success',
+        title: 'Регистрация успешна!',
+        text: 'Теперь вы можете войти в систему.',
+        confirmButtonText: 'Войти',
+        confirmButtonColor: '#003366'
+    }).then(() => {
+        window.location.href = "login.html";
+    });
+});
+</script>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Салон красоты Люкс Самара</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

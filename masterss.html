@@ -1,0 +1,168 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мастера - Люкс Самара</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Люкс Самара</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="masters.html">Мастера</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="masters">
+           <div class="master-cards">
+    <div class="master-card">
+        <img src="images/b2.jfif" alt="Мастер 1">
+        <h3>Елена</h3>
+        <p>Елена — профессионал с тонким эстетическим вкусом и вниманием к деталям. За её плечами — многочисленные курсы повышения квалификации и участие в мастер-классах от ведущих нейл-мастеров страны.</p>
+        <p class="btn">Записаться</p>
+    </div>
+    <div class="master-card">
+        <img src="images/b3.jfif" alt="Мастер 2">
+        <h3>Светлана</h3>
+        <p>Светлана — специалист с богатым опытом и чуткими руками. Сочетает классические техники массажа с современными методиками оздоровления.</p>
+        <p class="btn">Записаться</p>
+    </div>
+    <div class="master-card">
+        <img src="images/b4.jfif" alt="Мастер 3">
+        <h3>Мария</h3>
+        <p>Мария — врач-косметолог с глубокими знаниями анатомии и физиологии кожи. Постоянно совершенствует навыки, следит за инновациями в сфере эстетической медицины.</p>
+        <p class="btn">Записаться</p>
+    </div> 
+</div>
+
+<!-- Нижняя строка мастеров -->
+<div class="master-cards">
+    <div class="master-card">
+        <img src="images/b5.jfif" alt="Мастер 4">
+        <h3>Арина</h3>
+        <p>Арина сочетает художественный взгляд и техническое мастерство. Умеет подчеркнуть индивидуальность каждого клиента через стрижку и окрашивание.</p>
+        <p class="btn">Записаться</p>
+    </div>
+    <div class="master-card">
+        <img src="images/b6.jfif" alt="Мастер 5">
+        <h3>Айгуль</h3>
+        <p>Айгуль — мастер с безупречным глазомером и художественным чутьём. Создаёт брови, которые гармонично дополняют лицо и подчёркивают выразительность взгляда.</p>
+        <p class="btn">Записаться</p>
+    </div>
+         <div class="master-card">
+        <img src="images/b7.jfif" alt="Мастер 6"> 
+        <h3>Екатерина</h3>
+        <p>Екатерина с искренней любовью относится к своему делу, превращая каждую процедуру в приятный и комфортный опыт для клиентов. </p>
+        <p class="btn">Записаться</p>
+    </div>
+</div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Люкс Самара. Все права защищены.</p>
+        </div>
+    </footer>
+   <div id="bookingModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Запись на процедуру</h2>
+    <form id="bookingForm">
+      <div class="form-group">
+        <label for="master">Мастер:</label>
+        <input type="text" id="master" name="master" readonly>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Дата:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="time">Время:</label>
+        <select id="time" name="time" required>
+          <option value="">--Выберите время--</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+      </div>
+
+      <button type="submit" class="btn">Записаться</button>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="toast">
+  <div class="toast-icon">✔️</div>
+  <div class="toast-content">
+    <h3>Успешно!</h3>
+    <p>Ваша запись к мастеру <span id="toastMaster"></span> была успешно отправлена. Мы свяжемся с вами для подтверждения.</p>
+  </div>
+</div>
+
+
+  <script>
+    const modal = document.getElementById("bookingModal");
+    const closeBtn = document.querySelector(".close");
+    const masterButtons = document.querySelectorAll(".master-card .btn");
+    const masterInput = document.getElementById("master");
+    const toast = document.getElementById("toast");
+
+    // Открытие формы
+    masterButtons.forEach(button => {
+      button.addEventListener("click", (e) => {
+        const masterName = e.target.closest(".master-card").querySelector("h3").textContent;
+        masterInput.value = masterName;
+        modal.style.display = "block";
+      });
+    });
+
+    // Закрытие окна
+    closeBtn.addEventListener("click", () => modal.style.display = "none");
+    window.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
+
+  function showToast(masterName) {
+  const toast = document.getElementById("toast");
+  document.getElementById("toastMaster").textContent = masterName;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 4000);
+}
+
+// В обработчике формы:
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  modal.style.display = "none";
+  const masterName = masterInput.value;
+  this.reset();
+  showToast(masterName);
+});
+
+  </script>
+
+</body>
+</html>

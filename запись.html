@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Выбор даты и времени</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <h1>Выберите дату и время</h1>
+</header>
+
+<section class="booking-page container">
+  <form id="timeForm">
+    <label for="date">Дата:</label><br>
+    <input type="date" id="date" required><br>
+
+    <label for="time">Время:</label><br>
+    <select id="time" required>
+      <option value="">-- Выберите время --</option>
+      <option>10:00</option>
+      <option>12:00</option>
+      <option>14:00</option>
+      <option>16:00</option>
+      <option>18:00</option>
+    </select><br>
+
+    <button type="submit" class="btn">Подтвердить запись</button>
+  </form>
+
+  <p id="message" style="margin-top:20px; font-size:1.2rem; color:#003366;"></p>
+</section>
+
+<footer>
+  <p>© 2025 Harmony Beauty. Все права защищены.</p>
+</footer>
+
+<script>
+  // Отображение сообщения после выбора времени
+  document.getElementById('timeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+
+    if (date && time) {
+      document.getElementById('message').innerText =
+        "Мастер с вами свяжется в ближайшее время для подтверждения записи на " + 
+        date + " в " + time + ".";
+      
+      // Очистим форму
+      document.getElementById('timeForm').reset();
+    }
+  });
+</script>
+
+</body>
+</html>

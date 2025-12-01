@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Салон красоты Люкс Самара</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+
+<header>
+    <h1>Салон красоты Люкс Самара</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="masters.html">Мастера</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="portfolio.html">Портфолио</a></li>
+            <li><a href="register.html">Регистрация</a></li>
+            <li><a href="login.html">Вход</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="images/b1.jfif" alt="Салон красоты">
+    <div class="hero-text">
+        <h2>Добро пожаловать в Люкс Самара</h2>
+        <p>Мы предлагаем лучший уход за волосами, ногтями и кожей.</p>
+        <a href="register.html" class="btn">Записаться</a>
+    </div>
+</section>
+
+<section class="promotion-block">
+    <h3>Акция на первое посещение</h3>
+    <p>Скидка 20% на все услуги для новых клиентов. Спешите записаться!</p>
+</section>
+
+<section class="contact">
+    <h3>Контакты</h3>
+    <div class="contact-info">
+        <div>
+            <p>Телефон: +7 (123) 456-78-90</p>
+            <p>Часы работы: Пн-Сб 9:00 - 21:00</p>
+        </div>
+        <div>
+            <p>Адрес: Самара, ул. Ленина, 23</p>
+            <p>Соцсети: 
+                <a href="#">Instagram</a>, 
+                <a href="#">Facebook</a>
+            </p>
+        </div>
+    </div>
+    <div class="map" id="map"></div>
+</section>
+
+<script>
+    function initMap() {
+        var myMap = new ymaps.Map("map", {
+            center: [53.2001, 50.1403],
+            zoom: 12, 
+            controls: ['zoomControl', 'searchControl'] 
+        });
+        var myPlacemark = new ymaps.Placemark([53.2001, 50.1403], {
+            hintContent: 'Мы здесь!',
+            balloonContent: 'Наш офис в Самаре!'
+        });
+        myMap.geoObjects.add(myPlacemark);
+    }
+
+    ymaps.ready(initMap);
+</script>
+
+  <script>
+    const user = localStorage.getItem('activeUser');
+    const welcome = document.getElementById('welcome');
+    const logout = document.getElementById('logout');
+
+    if (user) {
+      welcome.textContent = "Здравствуйте, " + user + "!";
+      logout.style.display = "inline-block";
+    }
+
+    logout.addEventListener('click', () => {
+      localStorage.removeItem('activeUser');
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>
